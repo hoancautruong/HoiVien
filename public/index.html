@@ -1,261 +1,199 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Đăng ký Hội viên</title>
+  <meta charset="utf-8"/>
+  <title>PHIẾU ĐĂNG KÝ HỘI VIÊN - TTTM SENSE CITY</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <style>
+    * { box-sizing: border-box; }
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      padding: 20px;
-      background-color: #f8f8f8;
+      padding: 32px;
+      position: relative;
+      min-height: 100vh;
+      background-color: #fff;
     }
-
-    .container {
-      max-width: 600px;
+    body::before {
+      content: "";
+      background: url('https://drive.google.com/thumbnail?id=1C6CyY4fYFdyLKAOz0Wtr_QNLOWWvN6Ar') no-repeat top right;
+      background-size: 300px auto;
+      opacity: 0.5;
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -5;
+    }
+    form {
+      background-color: rgba(255, 192, 203, 0.3);
+      padding: 30px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      max-width: 800px;
       margin: auto;
-      background-color: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-
-    h1 {
+    .title, .title-sub {
+      color: #e91e63;
+      font-weight: bold;
+      text-transform: uppercase;
       font-size: 28px;
       text-align: center;
-      color: #333;
-      margin-bottom: 10px;
+      line-height: 1.5;
+      letter-spacing: 0.2px;
+      margin: 5px;
+      white-space: normal;
+      word-break: break-word;
     }
-
-    p.sub {
-      text-align: center;
-      font-size: 16px;
-      color: #666;
-      margin-bottom: 30px;
+    .title-sub { margin-bottom: 30px; }
+    .form-group {
+      margin-bottom: 15px;
     }
-
-    label {
+    .form-group > label, .section-title {
       font-weight: bold;
+      color: #000;
       display: block;
-      margin-bottom: 6px;
-      font-size: 16px;
+      margin-bottom: 5px;
     }
-
-    input, textarea {
+    .checkbox-group label, .radio-group label {
+      font-weight: normal;
+      color: #000;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"] {
       width: 100%;
-      padding: 12px;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 16px;
-      box-sizing: border-box;
+      padding: 8px;
+      margin-top: 5px;
+      border:  1px solid #ccc;
+      border-radius: 4px;
+      background-color: rgba(255, 255, 255, 0.9);
     }
-
+    .row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .col {
+      flex: 1;
+    }
+    .checkbox-group,
+    .radio-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 5px;
+    }
     button {
-      width: 100%;
-      padding: 14px;
-      background-color: #28a745;
+      background-color: #e91e63;
       color: white;
       border: none;
-      border-radius: 8px;
-      font-size: 18px;
-      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 5px;
       cursor: pointer;
+      display: block;
+      margin: 20px auto 0;
+      font-size: 16px;
     }
-
     button:hover {
-      background-color: #218838;
+      background-color: #d81b60;
     }
-
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 24px;
+    @media (max-width: 600px) {
+      .title, .title-sub {
+        font-size: 22px;
+        font-weight: 900;
+        line-height: 1;
       }
-
-      input, textarea {
-        font-size: 18px;
+      .title-sub { margin-bottom: 20px; }
+      .row {
+        flex-direction: column;
+        gap: 10px;
       }
+      form { padding: 20px; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>ĐĂNG KÝ HỘI VIÊN</h1>
-    <p class="sub">Vui lòng điền đầy đủ thông tin bên dưới</p>
-    <form id="regForm">
-      <label for="name">Họ và tên</label>
-      <input type="text" id="name" name="name" placeholder="Nguyễn Văn A" required />
-
-      <label for="phone">Số điện thoại</label>
-      <input type="text" id="phone" name="phone" placeholder="0912345678" required />
-
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="email@example.com" />
-
-      <label for="birth">Ngày sinh</label>
-      <input type="text" id="birth" name="birth" placeholder="dd/mm/yyyy" />
-
-      <label for="note">Ghi chú</label>
-      <textarea id="note" name="note" rows="2" placeholder="Ví dụ: Đăng ký nhóm CMA Huế..."></textarea>
-
-      <button type="submit">GỬI ĐĂNG KÝ</button>
-    </form>
-  </div>
-
+  <h2 class="title">PHIẾU ĐĂNG KÝ HỘI VIÊN</h2>
+  <h2 class="title title-sub">TTTM SENSE CITY CÀ MAU</h2>
+  <form id="registration-form">
+    <div class="form-group">
+      <label>1. Họ tên (*)</label>
+      <input name="full_name" required type="text"/>
+      <div class="radio-group">
+        <label><input name="gender" type="radio" value="Nam"/> Nam</label>
+        <label><input name="gender" type="radio" value="Nữ"/> Nữ</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>2. Ngày sinh (*)</label>
+      <input name="dob" required type="text" placeholder="dd/mm/yyyy"/>
+    </div>
+    <div class="form-group">
+      <label>3. Số CCCD (*)</label>
+      <input name="id_number" required type="text"/>
+    </div>
+    <div class="form-group">
+      <label>4. Địa chỉ liên lạc (ghi rõ)</label>
+      <div class="row"><div class="col"><input name="address" placeholder="Địa chỉ" type="text"/></div></div>
+      <div class="row"><div class="col"><input name="ward" placeholder="Phường/Xã" type="text"/></div></div>
+      <div class="row"><div class="col"><input name="province" placeholder="Tỉnh/Thành phố" type="text"/></div></div>
+    </div>
+    <div class="form-group">
+      <label>5. Điện thoại di động (*)</label>
+      <input name="mobile" required type="tel"/>
+    </div>
+    <div class="form-group">
+      <label class="section-title">8. Hình thức nhận thông tin</label>
+      <div class="checkbox-group">
+        <label><input name="contact_method" type="checkbox" value="SMS"/> Điện thoại/SMS</label>
+        <label><input name="contact_method" type="checkbox" value="Email"/> Email</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="section-title">9. Nghề nghiệp</label>
+      <div class="checkbox-group">
+        <label><input name="occupation" type="checkbox" value="Nội trợ"/> Nội trợ</label>
+        <label><input name="occupation" type="checkbox" value="Hưu trí"/> Hưu trí</label>
+        <label><input name="occupation" type="checkbox" value="NVVP"/> NVVP</label>
+        <label><input name="occupation" type="checkbox" value="HS-SV"/> HS – SV</label>
+        <label><input name="occupation" type="checkbox" value="Công nhân"/> Công nhân</label>
+        <label><input name="occupation" type="checkbox" value="Kinh doanh"/> Kinh doanh</label>
+        <label><input name="occupation" type="checkbox" value="Khác"/> Khác</label>
+      </div>
+    </div>
+    <button type="submit">Gửi đăng ký</button>
+  </form>
   <script>
-    document.getElementById("regForm").addEventListener("submit", async function(e) {
+    document.getElementById("registration-form").addEventListener("submit", async function(e) {
       e.preventDefault();
+      const form = e.target;
+
       const data = {
-        name: this.name.value,
-        phone: this.phone.value,
-        email: this.email.value,
-        birth: this.birth.value,
-        note: this.note.value,
+        full_name: form.full_name.value.trim(),
+        gender: form.gender.value,
+        dob: form.dob.value.trim(),
+        id_number: form.id_number.value.trim(),
+        address: form.address.value.trim(),
+        ward: form.ward.value.trim(),
+        province: form.province.value.trim(),
+        mobile: form.mobile.value.trim(),
+        contact_method: Array.from(form.querySelectorAll('input[name="contact_method"]:checked')).map(e => e.value),
+        occupation: Array.from(form.querySelectorAll('input[name="occupation"]:checked')).map(e => e.value)
       };
 
       const res = await fetch("/api/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify(data)
       });
 
       if (res.ok) {
-        alert("Đăng ký thành công!");
-        this.reset();
+        alert("Gửi đăng ký thành công!");
+        form.reset();
       } else {
-        alert("Đã có lỗi xảy ra. Vui lòng thử lại.");
-      }
-    });
-  </script>
-</body>
-</html><!DOCTYPE html>
-<html lang="vi">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Đăng ký Hội viên</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-      background-color: #f8f8f8;
-    }
-
-    .container {
-      max-width: 600px;
-      margin: auto;
-      background-color: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    h1 {
-      font-size: 28px;
-      text-align: center;
-      color: #333;
-      margin-bottom: 10px;
-    }
-
-    p.sub {
-      text-align: center;
-      font-size: 16px;
-      color: #666;
-      margin-bottom: 30px;
-    }
-
-    label {
-      font-weight: bold;
-      display: block;
-      margin-bottom: 6px;
-      font-size: 16px;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 16px;
-      box-sizing: border-box;
-    }
-
-    button {
-      width: 100%;
-      padding: 14px;
-      background-color: #28a745;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #218838;
-    }
-
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 24px;
-      }
-
-      input, textarea {
-        font-size: 18px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>ĐĂNG KÝ HỘI VIÊN</h1>
-    <p class="sub">Vui lòng điền đầy đủ thông tin bên dưới</p>
-    <form id="regForm">
-      <label for="name">Họ và tên</label>
-      <input type="text" id="name" name="name" placeholder="Nguyễn Văn A" required />
-
-      <label for="phone">Số điện thoại</label>
-      <input type="text" id="phone" name="phone" placeholder="0912345678" required />
-
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="email@example.com" />
-
-      <label for="birth">Ngày sinh</label>
-      <input type="text" id="birth" name="birth" placeholder="dd/mm/yyyy" />
-
-      <label for="note">Ghi chú</label>
-      <textarea id="note" name="note" rows="2" placeholder="Ví dụ: Đăng ký nhóm CMA Huế..."></textarea>
-
-      <button type="submit">GỬI ĐĂNG KÝ</button>
-    </form>
-  </div>
-
-  <script>
-    document.getElementById("regForm").addEventListener("submit", async function(e) {
-      e.preventDefault();
-      const data = {
-        name: this.name.value,
-        phone: this.phone.value,
-        email: this.email.value,
-        birth: this.birth.value,
-        note: this.note.value,
-      };
-
-      const res = await fetch("/api/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-
-      if (res.ok) {
-        alert("Đăng ký thành công!");
-        this.reset();
-      } else {
-        alert("Đã có lỗi xảy ra. Vui lòng thử lại.");
+        alert("Không thể gửi đăng ký. Vui lòng thử lại sau.");
       }
     });
   </script>
