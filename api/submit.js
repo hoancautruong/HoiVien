@@ -1,5 +1,5 @@
 const { google } = require("googleapis");
-const keys = require("../public/service_account.json");
+const keys = require("./service_account.json");
 
 const SPREADSHEET_ID = "1hh-KZ1PzQ6Cp2_grtv-LP7mABBDLq5fiAWJJPKnA8kw";
 
