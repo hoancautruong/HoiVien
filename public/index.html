@@ -1,184 +1,123 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="utf-8"/>
-  <title>PHIẾU ĐĂNG KÝ HỘI VIÊN - TTTM SENSE CITY</title>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Đăng ký hội viên</title>
   <style>
-    * { box-sizing: border-box; }
     body {
       font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 32px;
-      position: relative;
-      min-height: 100vh;
-      background-color: #fff;
-    }
-    body::before {
-      content: "";
-      background: url('https://drive.google.com/thumbnail?id=1C6CyY4fYFdyLKAOz0Wtr_QNLOWWvN6Ar') no-repeat top right;
-      background-size: 300px auto;
-      opacity: 0.5;
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -5;
-    }
-    form {
-      background-color: rgba(255, 192, 203, 0.3);
-      padding: 30px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
+      background: #ffe8f0;
+      padding: 20px;
       max-width: 600px;
       margin: auto;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    .title, .title-sub {
-      color: #e91e63;
-      font-weight: bold;
-      text-transform: uppercase;
-      font-size: 24px;
+    h1 {
       text-align: center;
-      margin: 5px;
-    }
-    .title-sub { margin-bottom: 20px; }
-    .form-group {
-      margin-bottom: 15px;
+      color: #d6336c;
     }
     label {
-      font-weight: bold;
-      color: #000;
       display: block;
-      margin-bottom: 5px;
+      margin-top: 10px;
+      font-weight: bold;
     }
-    input[type="text"],
-    input[type="email"],
-    input[type="tel"] {
+    input, select {
       width: 100%;
-      padding: 10px;
-      border:  1px solid #ccc;
-      border-radius: 5px;
-      font-size: 16px;
-      background-color: rgba(255, 255, 255, 0.9);
+      padding: 8px;
+      margin-top: 5px;
     }
-    .radio-group, .checkbox-group {
+    .checkbox-group {
       display: flex;
-      gap: 10px;
       flex-wrap: wrap;
+      gap: 10px;
       margin-top: 5px;
     }
     button {
-      background-color: #e91e63;
+      margin-top: 20px;
+      background-color: #d6336c;
       color: white;
+      padding: 10px;
       border: none;
-      padding: 12px 20px;
-      border-radius: 6px;
-      cursor: pointer;
-      display: block;
-      margin: 25px auto 0;
-      font-size: 18px;
-    }
-    button:hover {
-      background-color: #d81b60;
-    }
-    @media (max-width: 600px) {
-      .title, .title-sub {
-        font-size: 20px;
-      }
-      form { padding: 20px; }
+      width: 100%;
+      font-size: 16px;
     }
   </style>
 </head>
 <body>
-  <h2 class="title">PHIẾU ĐĂNG KÝ HỘI VIÊN</h2>
-  <h2 class="title title-sub">TTTM SENSE CITY CÀ MAU</h2>
-  <form id="registration-form">
-    <div class="form-group">
-      <label>1. Họ tên (*)</label>
-      <input name="full_name" required type="text"/>
-      <div class="radio-group">
-        <label><input name="gender" type="radio" value="Nam"/> Nam</label>
-        <label><input name="gender" type="radio" value="Nữ"/> Nữ</label>
-      </div>
+  <h1>ĐĂNG KÝ HỘI VIÊN</h1>
+  <form id="form">
+    <label>Họ tên</label>
+    <input name="full_name" required />
+
+    <label>Giới tính</label>
+    <div class="checkbox-group">
+      <label><input type="radio" name="gender" value="Nam" required /> Nam</label>
+      <label><input type="radio" name="gender" value="Nữ" required /> Nữ</label>
     </div>
-    <div class="form-group">
-      <label>2. Ngày sinh (*)</label>
-      <input name="dob" required type="text" placeholder="dd/mm/yyyy"/>
+
+    <label>Ngày sinh (dd/mm/yyyy)</label>
+    <input name="dob" required />
+
+    <label>CCCD</label>
+    <input name="id_number" required />
+
+    <label>Địa chỉ</label>
+    <input name="address" placeholder="Số nhà, đường" />
+    <input name="ward" placeholder="Phường/Xã" />
+    <input name="province" placeholder="Tỉnh/Thành phố" />
+
+    <label>Số điện thoại</label>
+    <input name="mobile" required />
+
+    <label>Nhận thông tin</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="contact_method" value="SMS" /> SMS</label>
+      <label><input type="checkbox" name="contact_method" value="Email" /> Email</label>
     </div>
-    <div class="form-group">
-      <label>3. Số CCCD (*)</label>
-      <input name="id_number" required type="text"/>
+
+    <label>Nghề nghiệp</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="occupation" value="HS – SV" /> HS – SV</label>
+      <label><input type="checkbox" name="occupation" value="CNVC – Hưu trí" /> CNVC – Hưu trí</label>
+      <label><input type="checkbox" name="occupation" value="KD tự do" /> KD tự do</label>
     </div>
-    <div class="form-group">
-      <label>4. Địa chỉ liên lạc (ghi rõ)</label>
-      <input name="addr1" type="text" placeholder="Địa chỉ"/>
-      <input name="addr2" type="text" placeholder="Phường/Xã"/>
-      <input name="addr3" type="text" placeholder="Tỉnh/Thành phố"/>
-    </div>
-    <div class="form-group">
-      <label>5. Điện thoại di động (*)</label>
-      <input name="mobile" required type="tel"/>
-    </div>
-    <div class="form-group">
-      <label>8. Hình thức nhận thông tin</label>
-      <div class="checkbox-group">
-        <label><input name="contact_method" type="checkbox" value="SMS"/> Điện thoại/SMS</label>
-        <label><input name="contact_method" type="checkbox" value="Email"/> Email</label>
-      </div>
-    </div>
-    <div class="form-group">
-      <label>9. Nghề nghiệp</label>
-      <div class="checkbox-group">
-        <label><input name="occupation" type="checkbox" value="Nội trợ"/> Nội trợ</label>
-        <label><input name="occupation" type="checkbox" value="Hưu trí"/> Hưu trí</label>
-        <label><input name="occupation" type="checkbox" value="NVVP"/> NVVP</label>
-        <label><input name="occupation" type="checkbox" value="HS-SV"/> HS – SV</label>
-        <label><input name="occupation" type="checkbox" value="Công nhân"/> Công nhân</label>
-        <label><input name="occupation" type="checkbox" value="Kinh doanh"/> Kinh doanh</label>
-        <label><input name="occupation" type="checkbox" value="Khác"/> Khác</label>
-      </div>
-    </div>
+
     <button type="submit">Gửi đăng ký</button>
   </form>
 
-<script>
-  document.querySelector("form").addEventListener("submit", async (e) => {
-    e.preventDefault();
+  <script>
+    document.getElementById("form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const form = e.target;
 
-    const form = e.target;
-    const data = {
-      full_name: form.full_name.value.trim(),
-      gender: form.gender.value,
-      dob: form.dob.value.trim(),
-      id_number: form.id_number.value.trim(),
-      address: form.address.value.trim(),
-      ward: form.ward.value.trim(),
-      province: form.province.value.trim(),
-      mobile: form.mobile.value.trim(),
+      const data = {
+        full_name: form.full_name.value.trim(),
+        gender: form.gender.value,
+        dob: form.dob.value.trim(),
+        id_number: form.id_number.value.trim(),
+        address: form.address.value.trim(),
+        ward: form.ward.value.trim(),
+        province: form.province.value.trim(),
+        mobile: form.mobile.value.trim(),
+        contact_method: Array.from(form.querySelectorAll("input[name='contact_method']:checked")).map(cb => cb.value),
+        occupation: Array.from(form.querySelectorAll("input[name='occupation']:checked")).map(cb => cb.value),
+      };
 
-      // Lấy danh sách checkbox
-      contact_method: Array.from(form.querySelectorAll("input[name='contact_method']:checked")).map(cb => cb.value),
-      occupation: Array.from(form.querySelectorAll("input[name='occupation']:checked")).map(cb => cb.value),
-    };
+      const res = await fetch("/api/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
 
-    console.log("GỬI:", data);
-
-    const res = await fetch("/api/submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
+      const result = await res.json();
+      if (res.ok) {
+        alert("Đăng ký thành công!");
+        form.reset();
+      } else {
+        alert("❌ " + (result.error || "Lỗi gửi dữ liệu"));
+      }
     });
-
-    const result = await res.json();
-    if (res.ok) {
-      alert("Đăng ký thành công!");
-      form.reset();
-    } else {
-      alert("❌ Lỗi: " + (result.error || "Không rõ"));
-    }
-  });
-</script>
-
+  </script>
 </body>
 </html>
