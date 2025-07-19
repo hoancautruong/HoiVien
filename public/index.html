@@ -142,55 +142,43 @@
     <button type="submit">Gửi đăng ký</button>
   </form>
 
-  <script>
-    document.getElementById("registration-form").addEventListener("submit", async function(e) {
-      e.preventDefault();
-      const form = e.target;
+<script>
+  document.querySelector("form").addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-      const phone = form.mobile.value.trim();
-      const id = form.id_number.value.trim();
-      const dob = form.dob.value.trim();
+    const form = e.target;
+    const data = {
+      full_name: form.full_name.value.trim(),
+      gender: form.gender.value,
+      dob: form.dob.value.trim(),
+      id_number: form.id_number.value.trim(),
+      address: form.address.value.trim(),
+      ward: form.ward.value.trim(),
+      province: form.province.value.trim(),
+      mobile: form.mobile.value.trim(),
 
-      const dateRegex = /^\d{2}\/\d{2}\/\d{4}$/;
-      if (!dateRegex.test(dob)) {
-        alert("Ngày sinh không đúng định dạng dd/mm/yyyy");
-        return;
-      }
-      if (!/^\d+$/.test(phone)) {
-        alert("Số điện thoại phải là số");
-        return;
-      }
-      if (!/^\d+$/.test(id)) {
-        alert("Số CCCD phải là số");
-        return;
-      }
+      // Lấy danh sách checkbox
+      contact_method: Array.from(form.querySelectorAll("input[name='contact_method']:checked")).map(cb => cb.value),
+      occupation: Array.from(form.querySelectorAll("input[name='occupation']:checked")).map(cb => cb.value),
+    };
 
-      const address = [form.addr1.value, form.addr2.value, form.addr3.value].filter(Boolean).join(", ");
+    console.log("GỬI:", data);
 
-      const data = {
-        full_name: form.full_name.value.trim(),
-        gender: form.gender.value,
-        dob,
-        id_number: id,
-        address,
-        mobile: phone,
-        contact_method: Array.from(form.querySelectorAll('input[name="contact_method"]:checked')).map(e => e.value),
-        occupation: Array.from(form.querySelectorAll('input[name="occupation"]:checked')).map(e => e.value)
-      };
-
-      const res = await fetch("/api/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-      });
-
-      if (res.ok) {
-        alert("Gửi đăng ký thành công!");
-        form.reset();
-      } else {
-        alert("Không thể gửi đăng ký. Vui lòng thử lại sau.");
-      }
+    const res = await fetch("/api/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
     });
-  </script>
+
+    const result = await res.json();
+    if (res.ok) {
+      alert("Đăng ký thành công!");
+      form.reset();
+    } else {
+      alert("❌ Lỗi: " + (result.error || "Không rõ"));
+    }
+  });
+</script>
+
 </body>
 </html>
