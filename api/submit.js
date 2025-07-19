@@ -80,6 +80,7 @@ module.exports = async (req, res) => {
 
   } catch (error) {
     console.error("Lỗi ghi dữ liệu:", error);
+    console.error("Lỗi ghi dữ liệu:", error.response?.data || error.message || error);
     return res.status(500).json({ error: "Lỗi server khi ghi dữ liệu" });
   }
 };
